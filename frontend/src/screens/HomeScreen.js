@@ -1,9 +1,8 @@
 import data from '../data.js'
 
-const { products } = data
-
 const HomeScreen = {
     render: () => {
+        const { products } = data
         return `
         <ul class="products">
             ${products.map((product) => `
@@ -21,11 +20,11 @@ const HomeScreen = {
                         ${product.brand}
                     </div>
                     <div class="product-price">
-                        ${product.price}
+                        $${product.price}
                     </div>
                 </div>
             </li>
-            `)}
+            `).join('\n')}
         `
     }
 }
