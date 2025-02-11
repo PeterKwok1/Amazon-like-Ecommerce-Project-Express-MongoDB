@@ -1,24 +1,25 @@
-import axios from 'axios'
+import axios from "axios";
 
 const HomeScreen = {
-    render: async () => {
+  render: async () => {
+    const response = await axios({
+      url: "http://localhost:5000/api/products",
+      headers: {
+        "Content-type": "application/json",
+      },
+    });
 
-        const response = await axios({
-            url: 'http://localhost:5000/api/products',
-            headers: {
-                'Content-type': 'application/json'
-            }
-        })
+    if (!response || response.statusText !== "OK") {
+      return "<div>Error getting data</div>";
+    }
 
-        if (!response || response.statusText !== 'OK') {
-            return '<div>Error getting data</div>'
-        }
+    const products = response.data;
 
-        const products = response.data
-
-        return `
+    return `
         <ul class="products">
-            ${products.map((product) => `
+            ${products
+              .map(
+                (product) => `
             <li>
                 <div class="product">
                     <a href="/#/product/${product._id}">
@@ -37,9 +38,11 @@ const HomeScreen = {
                     </div>
                 </div>
             </li>
-            `).join('\n')}
-        `
-    }
-}
+            `,
+              )
+              .join("\n")}
+        `;
+  },
+};
 
-export default HomeScreen
+export default HomeScreen;
