@@ -13,3 +13,5 @@ app.get('/api/products', (req, res) => {
 app.listen(5000, () => {
     console.log('serve at http://localhost:5000')
 })
+
+let hello = 2
