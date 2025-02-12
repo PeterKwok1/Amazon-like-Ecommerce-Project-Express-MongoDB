@@ -29,3 +29,4 @@ https://www.youtube.com/playlist?list=PLeh2GWv22bmSkMEpSv5Wme56XVpKG1Tr5 - https
 
 - --watch flag > Nodemon
 - package.json, type: module > babel (backend) (for ES6)
+- passwords aren't being hashed
