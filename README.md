@@ -19,7 +19,7 @@ Refresh knowledge of fullstack web-development basics.
 
 ## Resources
 
-https://www.youtube.com/playlist?list=PLeh2GWv22bmSkMEpSv5Wme56XVpKG1Tr5 - https://www.youtube.com/watch?v=dB69Dj1m9NE&list=PLeh2GWv22bmSkMEpSv5Wme56XVpKG1Tr5&index=14
+https://www.youtube.com/playlist?list=PLeh2GWv22bmSkMEpSv5Wme56XVpKG1Tr5 - https://www.youtube.com/watch?v=vrISLeeVp4s&list=PLeh2GWv22bmSkMEpSv5Wme56XVpKG1Tr5&index=27
 
 ## Tickets
 
