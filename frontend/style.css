@@ -325,9 +325,12 @@ footer {
   padding: 1rem;
   margin: 1rem;
 }
+.order-info > div:first-child {
+  margin-top: 0;
+}
 .order-action {
   flex: 1 1 20rem;
-  border: 0.1rem #c0c0c0;
+  border: 0.1rem #c0c0c0 solid;
   border-radius: 0.5rem;
   background-color: #fcfcfc;
   padding: 1rem;
