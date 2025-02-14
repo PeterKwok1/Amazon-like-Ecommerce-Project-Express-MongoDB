@@ -54,6 +54,6 @@ app.use((err, req, res, next) => {
   res.status(status).send({ message: err.message });
 });
 
-app.listen(config.PORT, () => {
-  console.log(`App listening on http://localhost:${config.PORT}`);
+app.listen(config.PORT, "0.0.0.0", () => {
+  console.log(`App listening on http://localhost:${config.PORT}`); // testing
 });

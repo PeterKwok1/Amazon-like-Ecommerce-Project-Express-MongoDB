@@ -57,5 +57,6 @@ https://www.youtube.com/playlist?list=PLeh2GWv22bmSkMEpSv5Wme56XVpKG1Tr5 - Admin
 
 ### Production
 
-- render requires environment variables
+- render requires env
+- render can't read env from process.env, but it will from dotenv
 - rebuild front end config to make requests to hoster
