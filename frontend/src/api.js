@@ -106,7 +106,7 @@ export const createOrder = async (order) => {
       },
       data: order,
     });
-    if (response.statusText !== "Created") {
+    if (response.status !== 201) {
       throw new Error(response.data.message);
     }
     return response.data;
