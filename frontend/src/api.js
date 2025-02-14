@@ -12,7 +12,7 @@ export const getProduct = async (id) => {
       },
     });
 
-    if (response.statusText !== "OK") {
+    if (response.status !== 200) {
       throw new Error(response.data.message);
     }
 
@@ -36,7 +36,7 @@ export const signin = async ({ email, password }) => {
         password,
       },
     });
-    if (response.statusText !== "OK") {
+    if (response.status !== 200) {
       throw new Error(response.data.message);
     }
     return response.data;
@@ -59,7 +59,7 @@ export const register = async ({ name, email, password }) => {
         password,
       },
     });
-    if (response.statusText !== "OK") {
+    if (response.status !== 200) {
       throw new Error(response.data.message);
     }
     return response.data;
@@ -84,7 +84,7 @@ export const update = async ({ name, email, password }) => {
         password,
       },
     });
-    if (response.statusText !== "OK") {
+    if (response.status !== 200) {
       throw new Error(response.data.message);
     }
     return response.data;
@@ -124,7 +124,7 @@ export const getOrder = async (id) => {
         Authorization: `Bearer ${token}`,
       },
     });
-    if (response.statusText !== "OK") {
+    if (response.status !== 200) {
       throw new Error(response.data.message);
     }
     return response.data;
@@ -142,7 +142,7 @@ export const getMyOrders = async () => {
         Authorization: `Bearer ${token}`,
       },
     });
-    if (response.statusText !== "OK") {
+    if (response.status !== 200) {
       throw new Error(response.data.message);
     }
     return response.data;
@@ -158,7 +158,7 @@ export const getPaypalClientId = async () => {
       "Content-Type": "application/json",
     },
   });
-  if (response.statusText !== "OK") {
+  if (response.status !== 200) {
     throw new Error(response.data.message);
   }
   return response.data.clientId;
