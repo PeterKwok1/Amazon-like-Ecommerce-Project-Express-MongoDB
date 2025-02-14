@@ -18,6 +18,7 @@
     "webpack-dev-server": "^5.2.0"
   },
   "dependencies": {
+    "@paypal/paypal-js": "^8.2.0",
     "axios": "^1.7.9"
   }
 }

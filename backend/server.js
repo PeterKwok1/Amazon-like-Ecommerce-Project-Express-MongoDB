@@ -5,6 +5,7 @@ import mongoose from "mongoose";
 import config from "../config.js";
 import userRouter from "./routers/userRouter.js";
 import orderRouter from "./routers/orderRouter.js";
+import paypalRouter from "./routers/paypalRouter.js";
 
 mongoose
   .connect(config.MONGODB_URI)
@@ -23,6 +24,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/users", userRouter);
 app.use("/api/orders", orderRouter);
+app.use("/api/paypal", paypalRouter);
 
 app.get("/api/products", (req, res) => {
   res.send(data.products);
