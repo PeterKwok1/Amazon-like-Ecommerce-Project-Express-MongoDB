@@ -1,13 +1,16 @@
 import axios from "axios";
 import Rating from "../components/Rating.js";
 import { hideLoading, showLoading } from "../utils.js";
+import { apiURL } from "../config.js";
+
+console.log(apiURL);
 
 const HomeScreen = {
   render: async () => {
     showLoading();
 
     const response = await axios({
-      url: "http://localhost:5000/api/products",
+      url: `${apiURL}/api/products`,
       headers: {
         "Content-type": "application/json",
       },
