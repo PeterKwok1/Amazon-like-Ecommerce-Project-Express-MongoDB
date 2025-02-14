@@ -11,7 +11,7 @@ import {
 import { loadScript } from "@paypal/paypal-js";
 
 const addPaypalSdk = async (totalPrice) => {
-  // showLoading();
+  showLoading();
 
   const clientId = await getPaypalClientId();
 
@@ -25,7 +25,7 @@ const addPaypalSdk = async (totalPrice) => {
     handlePayment(paypal, totalPrice);
   }
 
-  // hideLoading()
+  hideLoading();
 };
 const handlePayment = (paypal, totalPrice) => {
   paypal
@@ -67,107 +67,70 @@ const handlePayment = (paypal, totalPrice) => {
           throw new Error(errorMessage);
         } catch (error) {
           console.error(error);
-          showMessage(`Could not initiate PayPal Checkout... ${error}`);
+          showMessage(`Could not initiate PayPal Checkout...<br><br>${error}`);
         }
       },
 
-      // async onApprove(data, actions) {
-      //   try {
-      //     const response = await fetch(
-      //       `/api/paypal/${data.orderID}/capture`,
-      //       {
-      //         method: "POST",
-      //         headers: {
-      //           "Content-Type": "application/json",
-      //         },
-      //       },
-      //     );
+      async onApprove(data, actions) {
+        try {
+          const { token } = getUserInfo();
+          const response = await fetch(
+            `${apiURL}/api/paypal/${data.orderID}/capture`, // data.orderID is the paypal order id
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+              },
+              body: JSON.stringify({
+                id: parseRequestURL().id,
+                orderID: data.orderID,
+                payerID: data.payerID,
+                paymentID: data.paymentID,
+              }),
+            },
+          );
 
-      //     const orderData = await response.json();
-      //     // Three cases to handle:
-      //     //   (1) Recoverable INSTRUMENT_DECLINED -> call actions.restart()
-      //     //   (2) Other non-recoverable errors -> Show a failure message
-      //     //   (3) Successful transaction -> Show confirmation or thank you message
+          const orderData = await response.json();
+          // Three cases to handle:
+          //   (1) Recoverable INSTRUMENT_DECLINED -> call actions.restart()
+          //   (2) Other non-recoverable errors -> Show a failure message
+          //   (3) Successful transaction -> Show confirmation or thank you message
 
-      //     const errorDetail = orderData?.details?.[0];
+          const errorDetail = orderData?.details?.[0];
 
-      //     if (errorDetail?.issue === "INSTRUMENT_DECLINED") {
-      //       // (1) Recoverable INSTRUMENT_DECLINED -> call actions.restart()
-      //       // recoverable state, per
-      //       // https://developer.paypal.com/docs/checkout/standard/customize/handle-funding-failures/
-      //       return actions.restart();
-      //     } else if (errorDetail) {
-      //       // (2) Other non-recoverable errors -> Show a failure message
-      //       throw new Error(
-      //         `${errorDetail.description} (${orderData.debug_id})`,
-      //       );
-      //     } else if (!orderData.purchase_units) {
-      //       throw new Error(JSON.stringify(orderData));
-      //     } else {
-      //       // (3) Successful transaction -> Show confirmation or thank you message
-      //       // Or go to another URL:  actions.redirect('thank_you.html');
-      //       const transaction =
-      //         orderData?.purchase_units?.[0]?.payments?.captures?.[0] ||
-      //         orderData?.purchase_units?.[0]?.payments?.authorizations?.[0];
-      //       resultMessage(
-      //         `Transaction ${transaction.status}: ${transaction.id}<br>
-      //     <br>See console for all available details`,
-      //       );
-      //       console.log(
-      //         "Capture result",
-      //         orderData,
-      //         JSON.stringify(orderData, null, 2),
-      //       );
-      //     }
-      //   } catch (error) {
-      //     console.error(error);
-      //     resultMessage(
-      //       `Sorry, your transaction could not be processed...<br><br>${error}`,
-      //     );
-      //   }
-      // },
+          if (errorDetail?.issue === "INSTRUMENT_DECLINED") {
+            // (1) Recoverable INSTRUMENT_DECLINED -> call actions.restart()
+            // recoverable state, per
+            // https://developer.paypal.com/docs/checkout/standard/customize/handle-funding-failures/
+            return actions.restart();
+          } else if (errorDetail) {
+            // (2) Other non-recoverable errors -> Show a failure message
+            throw new Error(
+              `${errorDetail.description} (${orderData.debug_id})`,
+            );
+          } else if (!orderData.purchase_units) {
+            throw new Error(JSON.stringify(orderData));
+          } else {
+            // (3) Successful transaction -> Show confirmation or thank you message
+            // Or go to another URL:  actions.redirect('thank_you.html');
+            const transaction =
+              orderData?.purchase_units?.[0]?.payments?.captures?.[0] ||
+              orderData?.purchase_units?.[0]?.payments?.authorizations?.[0];
+            showMessage(
+              `Transaction ${transaction.status}: ${transaction.id}<br><br>Thank you for shopping!`,
+            );
+            rerender(OrderScreen);
+          }
+        } catch (error) {
+          console.error(error);
+          showMessage(
+            `Sorry, your transaction could not be processed...<br><br>${error}`,
+          );
+        }
+      },
     })
     .render("#paypal-button");
-  // await paypal.Buttons().render("#paypal-button");
-
-  // window.paypal.Buttons.render(
-  //   {
-  //     env: "sandbox",
-  //     client: {
-  //       sandbox: clientId,
-  //       production: "",
-  //     },
-  //     locale: "en_US",
-  //     style: {
-  //       size: "responsive",
-  //       color: "gold",
-  //       shape: "pill",
-  //     },
-  //     commit: true,
-  //     payment(data, actions) {
-  //       return actions.payment.create({
-  //         transactions: {
-  //           amount: {
-  //             total: totalPrice,
-  //             currency: "USD",
-  //           },
-  //         },
-  //       });
-  //     },
-  //     onAuthorize(data, actions) {
-  //       return actions.payment.execute().then(async () => {});
-  //       showLoading();
-  //       // call pay order
-  //       hideLoading();
-  //       showMessage("Payment was successful", () => {
-  //         rerender(OrderScreen);
-  //       });
-  //     },
-  //   },
-  //   "#paypal-button",
-  // ).then(() => {
-  //   hideLoading();
-  // });
 };
 
 const OrderScreen = {

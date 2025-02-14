@@ -10,6 +10,7 @@ import {
   OrdersController,
 } from "@paypal/paypal-server-sdk";
 import config from "../../config.js";
+import Order from "../models/orderModel.js";
 
 const client = new Client({
   clientCredentialsAuthCredentials: {
@@ -51,7 +52,6 @@ paypalRouter.post(
     }
   }),
 );
-
 const createOrder = async (totalPrice) => {
   const collect = {
     body: {
@@ -60,7 +60,7 @@ const createOrder = async (totalPrice) => {
         {
           amount: {
             currencyCode: "USD",
-            value: totalPrice,
+            value: totalPrice.toString(),
           },
         },
       ],
@@ -71,6 +71,60 @@ const createOrder = async (totalPrice) => {
   try {
     const { body, ...httpResponse } =
       await ordersController.ordersCreate(collect);
+    // Get more response info...
+    // const { statusCode, headers } = httpResponse;
+    return {
+      jsonResponse: JSON.parse(body),
+      httpStatusCode: httpResponse.statusCode,
+    };
+  } catch (error) {
+    if (error instanceof ApiError) {
+      // const { statusCode, headers } = error;
+      throw new Error(error.message);
+    }
+  }
+};
+
+paypalRouter.post(
+  "/:paypalID/capture",
+  isAuth,
+  expressAsyncHandler(async (req, res) => {
+    try {
+      const { jsonResponse, httpStatusCode } = await captureOrder(
+        req.params.paypalID,
+      );
+
+      const order = await Order.findById(req.body.id);
+
+      if (order) {
+        order.isPaid = true;
+        order.paidAt = Date.now();
+        order.payment.paymentResult = {
+          orderID: req.body.orderID,
+          payerID: req.body.payerID,
+          paymentID: req.body.paymentID,
+        };
+        await order.save();
+      } else {
+        res.status(404).send({ message: "Order not found" });
+      }
+
+      res.status(httpStatusCode).json(jsonResponse);
+    } catch (error) {
+      console.error("Failed to create order:", error);
+      res.status(500).json({ error: "Failed to capture order." });
+    }
+  }),
+);
+const captureOrder = async (paypalID) => {
+  const collect = {
+    id: paypalID,
+    prefer: "return=minimal",
+  };
+
+  try {
+    const { body, ...httpResponse } =
+      await ordersController.ordersCapture(collect);
     // Get more response info...
     // const { statusCode, headers } = httpResponse;
     return {

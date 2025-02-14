@@ -14,6 +14,7 @@ Other packages/technologies:
 Features ... workflow
 
 - PayPal API
+  - Sandbox, fill in fake info and test
 
 ## Purpose
 
@@ -40,5 +41,4 @@ https://www.youtube.com/playlist?list=PLeh2GWv22bmSkMEpSv5Wme56XVpKG1Tr5 - https
 - package.json, type: module > babel (backend) (for ES6)
 - dialog tag / popover > manual modals
 - paypal api has changed
-- he doesn't hash passwords
-- doesn't make sense to me to send price from the front end.
+- tutorial doesn't hash passwords
