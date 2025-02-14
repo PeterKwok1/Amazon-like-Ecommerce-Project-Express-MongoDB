@@ -18,7 +18,9 @@ const HomeScreen = {
 
     hideLoading();
 
-    if (!response || response.statusText !== "OK") {
+    console.log(response.statusText);
+    console.log(response.status, typeof response.status);
+    if (!response || response.status !== 200) {
       return "<div>Error getting data</div>";
     }
 
