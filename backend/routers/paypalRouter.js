@@ -9,7 +9,7 @@ import {
   LogLevel,
   OrdersController,
 } from "@paypal/paypal-server-sdk";
-import config from "../../config.js";
+import config from "../config.js";
 import Order from "../models/orderModel.js";
 
 const client = new Client({

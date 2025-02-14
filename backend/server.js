@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import data from "./data.js";
 import mongoose from "mongoose";
-import config from "../config.js";
+import config from "./config.js";
 import userRouter from "./routers/userRouter.js";
 import orderRouter from "./routers/orderRouter.js";
 import paypalRouter from "./routers/paypalRouter.js";
@@ -54,6 +54,6 @@ app.use((err, req, res, next) => {
   res.status(status).send({ message: err.message });
 });
 
-app.listen(5000, () => {
-  console.log("serve at http://localhost:5000");
+app.listen(config.PORT, () => {
+  console.log(`App listening on http://localhost:${config.PORT}`);
 });

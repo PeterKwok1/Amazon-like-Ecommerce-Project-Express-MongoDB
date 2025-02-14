@@ -17,7 +17,9 @@ Other packages/technologies:
 Features ... workflow
 
 - PayPal API
-  - Sandbox, fill in fake info and test
+  - Sandbox account
+    - email: sb-5kmkv37730207@personal.example.com
+    - password: x<K{8S]]
 - Profile
   - Order history
   - Order details
@@ -32,7 +34,6 @@ https://www.youtube.com/playlist?list=PLeh2GWv22bmSkMEpSv5Wme56XVpKG1Tr5 - Admin
 
 ## Tickets
 
-- process.env destructure > config.js
 - prevent adding unavailable items to cart
 - form validation
   - re-enter password should be required to submit
@@ -49,3 +50,12 @@ https://www.youtube.com/playlist?list=PLeh2GWv22bmSkMEpSv5Wme56XVpKG1Tr5 - Admin
 - dialog tag / popover > manual modals
 - paypal api has changed
 - tutorial doesn't hash passwords
+
+### Dev
+
+- front end testing is served on a different port, meaning it does not use the express / and public routes.
+
+### Production
+
+- render requires .env because it isn't pushed to github
+- rebuild front end config to make requests to hoster
