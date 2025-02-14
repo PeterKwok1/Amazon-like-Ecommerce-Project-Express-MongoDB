@@ -6,6 +6,8 @@ import config from "../config.js";
 import userRouter from "./routers/userRouter.js";
 import orderRouter from "./routers/orderRouter.js";
 import paypalRouter from "./routers/paypalRouter.js";
+const __dirname = import.meta.dirname;
+import * as path from "path";
 
 mongoose
   .connect(config.MONGODB_URI)
@@ -18,9 +20,16 @@ mongoose
 
 const app = express();
 
+// "the path that you provide to the express.static function is relative to the directory from where you launch your node process" - express docs
+app.use(express.static(path.join(__dirname, "dist")));
+
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.route("/").get((req, res) => {
+  res.sendFile(__dirname + "/dist/index.html");
+});
 
 app.use("/api/users", userRouter);
 app.use("/api/orders", orderRouter);
