@@ -1,4 +1,5 @@
-process.loadEnvFile();
+// process.loadEnvFile();
+import "dotenv/config";
 
 export default {
   PORT: process.env.PORT,

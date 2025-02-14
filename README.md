@@ -57,5 +57,5 @@ https://www.youtube.com/playlist?list=PLeh2GWv22bmSkMEpSv5Wme56XVpKG1Tr5 - Admin
 
 ### Production
 
-- render requires .env because it isn't pushed to github
+- render requires environment variables
 - rebuild front end config to make requests to hoster
