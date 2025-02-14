@@ -6,6 +6,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon --watch backend --exec babel-node backend/server.js",
+    "serve": "node backend/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

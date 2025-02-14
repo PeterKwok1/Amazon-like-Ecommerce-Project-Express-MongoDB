@@ -4,10 +4,13 @@
 
 A fullstack Amazon-like ecommerce webisite using Express.js and MongoDB.
 
+link: (warning, spin up time, ~30sec, free webhosting)
+
 Other packages/technologies:
 
 - Webpack
 - Babel
+- jwt
 - Prettier
 - ESlint
 
@@ -15,6 +18,9 @@ Features ... workflow
 
 - PayPal API
   - Sandbox, fill in fake info and test
+- Profile
+  - Order history
+  - Order details
 
 ## Purpose
 
@@ -22,7 +28,7 @@ Refresh knowledge of fullstack web-development basics.
 
 ## Resources
 
-https://www.youtube.com/playlist?list=PLeh2GWv22bmSkMEpSv5Wme56XVpKG1Tr5 - https://www.youtube.com/watch?v=gT4zEfoV5Us&list=PLeh2GWv22bmSkMEpSv5Wme56XVpKG1Tr5&index=32
+https://www.youtube.com/playlist?list=PLeh2GWv22bmSkMEpSv5Wme56XVpKG1Tr5 - Admin Dashboard
 
 ## Tickets
 
@@ -31,6 +37,7 @@ https://www.youtube.com/playlist?list=PLeh2GWv22bmSkMEpSv5Wme56XVpKG1Tr5 - https
 - form validation
   - re-enter password should be required to submit
   - backend
+- format date paid
 - Personalize a bit
 - spacing
 - ommitted admin dashboard for timely application
