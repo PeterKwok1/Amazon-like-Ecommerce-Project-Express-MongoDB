@@ -4,29 +4,42 @@
 
 A fullstack Amazon-like ecommerce webisite using Express.js and MongoDB.
 
-link: (warning, spin up time, ~30sec, free webhosting)
+Hosted at: https://amazon-like-ecommerce-project-express.onrender.com
 
-Other packages/technologies:
+(takes ~30sec to spin up after after inactivity due to free hosting)
 
+## Features
+
+- Shopping cart
+- User account: click [username] (top right)
+  - Update info
+  - Order history
+    - Order details: click "DETAILS" (right)
+      - Pay unpaid orders
+- Order details
+  - Shipping
+  - Payment
+    - Updates to paid on payment
+    - PayPal API (Stripe not supported)
+      - Sandbox account
+        - email: sb-5kmkv37730207@personal.example.com
+        - password: x<K{8S]]
+  - Place order
+    - Creates the order and clears cart, allowing you to pay later
+
+## Packages / Technologies used:
+
+- Express
+- MongoDB
 - Webpack
 - Babel
-- jwt
-- Prettier
-- ESlint
-
-Features ... workflow
-
-- PayPal API
-  - Sandbox account
-    - email: sb-5kmkv37730207@personal.example.com
-    - password: x<K{8S]]
-- Profile
-  - Order history
-  - Order details
+- Postman
+- JWT
+- PayPal SDK
 
 ## Purpose
 
-Refresh knowledge of fullstack web-development basics.
+Refresh knowledge of fullstack web-development.
 
 ## Resources
 
@@ -34,30 +47,27 @@ https://www.youtube.com/playlist?list=PLeh2GWv22bmSkMEpSv5Wme56XVpKG1Tr5 - Admin
 
 ## Tickets
 
-- prevent adding unavailable items to cart
-- form validation
-  - re-enter password should be required to submit
-  - backend
-- format date paid
-- Personalize a bit
-- spacing
-- ommitted admin dashboard for timely application
+- Prevent adding unavailable items to cart.
+- Form validation (front and backend)
+  - Re-enter password should be required to submit.
+- Format date paid.
+- Personalize a bit.
 
 ## Notes
 
 - --watch flag > Nodemon
 - package.json, type: module > babel (backend) (for ES6)
-- dialog tag / popover > manual modals
-- paypal api has changed
-- tutorial doesn't hash passwords
+- dialog tag / popover > manual modals (show/hide-Loading, showMessage)
+- PayPal API has changed.
+- Passwords not hashed.
 
 ### Dev
 
-- front end testing is served on a different port, meaning it does not use the express / and public routes.
+- Front end testing is served on a different port, meaning it does not use the express "/" and public routes.
 
 ### Production
 
-- render requires env
-- render can't read env from process.env, but it will from dotenv
-- rebuild front end config to make requests to hoster
-- for some reason, responses don't return statusText, so I'm using status
+- Add env to render.
+  - Render can't read env from process.env, but can from dotenv.
+- Change front end config before building to make requests to hoster.
+- Responses don't return statusText on render, so I switched to status.
