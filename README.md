@@ -15,19 +15,19 @@ Hosted at: https://amazon-like-ecommerce-project-express.onrender.com
   - Update info
   - Order history
     - Order details: click "DETAILS" (right)
-      - Pay unpaid orders
-- Order details
+      - Pay unpaid orders.
+- Order
   - Shipping
   - Payment
-    - Updates to paid on payment
+    - Updates to paid on payment.
     - PayPal API (Stripe not supported)
       - Sandbox account
         - email: sb-5kmkv37730207@personal.example.com
         - password: x<K{8S]]
   - Place order
-    - Creates the order and clears cart, allowing you to pay later
+    - Creates the order and clears cart, allowing you to pay later (Order details).
 
-## Packages / Technologies used:
+## Frameworks / Libraries / Technologies
 
 - Express
 - MongoDB
