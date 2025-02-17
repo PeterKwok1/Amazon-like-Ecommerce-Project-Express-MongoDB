@@ -6,7 +6,7 @@ A fullstack Amazon-like ecommerce webisite using Express.js and MongoDB.
 
 Hosted at: https://amazon-like-ecommerce-project-express.onrender.com
 
-(takes ~30sec to spin up after after inactivity due to free hosting)
+(Takes ~30 sec to spin-up after inactivity due to free hosting.)
 
 ## Features
 
@@ -20,7 +20,7 @@ Hosted at: https://amazon-like-ecommerce-project-express.onrender.com
   - Shipping
   - Payment
     - Updates to paid on payment.
-    - PayPal API (Stripe not supported)
+    - PayPal SDK (Stripe not supported)
       - Sandbox account
         - email: sb-5kmkv37730207@personal.example.com
         - password: x<K{8S]]
@@ -47,19 +47,22 @@ https://www.youtube.com/playlist?list=PLeh2GWv22bmSkMEpSv5Wme56XVpKG1Tr5 - Admin
 
 ## Tickets
 
-- Prevent adding unavailable items to cart.
-- Form validation (front and backend)
+- Form validation
   - Re-enter password should be required to submit.
-- Format date paid.
 - Personalize a bit.
+  - Format date paid.
+  - Header spacing
+  - Product page spacing
 
 ## Notes
 
 - --watch flag > Nodemon
 - package.json, type: module > babel (backend) (for ES6)
 - dialog tag / popover > manual modals (show/hide-Loading, showMessage)
-- PayPal API has changed.
-- Passwords not hashed.
+- PayPal SDK has changed.
+- Forms are not validated in the backend.
+- Passwords are not hashed.
+- Orders are not validated in the backend.
 
 ### Dev
 

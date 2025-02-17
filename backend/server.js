@@ -55,5 +55,5 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(config.PORT, "0.0.0.0", () => {
-  console.log(`App listening on http://localhost:${config.PORT}`); // testing
+  console.log(`App listening on http://localhost:${config.PORT}`); // testing link
 });

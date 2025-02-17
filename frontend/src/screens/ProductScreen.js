@@ -5,9 +5,12 @@ import Rating from "../components/Rating.js";
 const ProductScreen = {
   after_render: () => {
     const request = parseRequestURL();
-    document.getElementById("add-button").addEventListener("click", () => {
-      document.location.hash = `/cart/${request.id}`;
-    });
+    const add_button = document.getElementById("add-button");
+    if (add_button) {
+      add_button.addEventListener("click", () => {
+        document.location.hash = `/cart/${request.id}`;
+      });
+    }
   },
   render: async () => {
     const request = parseRequestURL();
@@ -63,7 +66,7 @@ const ProductScreen = {
               Status: ${product.countInStock > 0 ? `<span class="success">In Stock</span>` : `<span class="error">Unavailable</span>`}
             </li>
             <li>
-              <button id="add-button" class="fw primary">Add to Cart</button>
+              ${product.countInStock > 0 ? `<button id="add-button" class="fw primary">Add to Cart</button>` : ""}
             </li>
           </ul>
         </div>

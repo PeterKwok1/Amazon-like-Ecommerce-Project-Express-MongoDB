@@ -5,6 +5,8 @@ export default {
       name: "Hiskywin Full Zip Running Shirts Thermal Workout",
       category: "Shirts",
       image: "/images/product-1.jpg",
+      description:
+        "Stay warm and comfortable during your cold-weather workouts with the Hiskywin Full Zip Running Shirt. Engineered for athletes who push their limits, this thermal workout shirt combines lightweight warmth with breathable performance. Featuring a full zip design, it offers customizable ventilation, letting you control your comfort level while you move.",
       price: 60,
       brand: "Hiskywin",
       rating: 4.5,
@@ -16,26 +18,34 @@ export default {
       name: "Nike Full-Zip Hoodie Mens Workout Sweatshirt",
       category: "Shirts",
       image: "/images/product-2.jpg",
+      description:
+        "Elevate your training sessions and everyday comfort with the Nike Full-Zip Hoodie. Crafted for the modern athlete, this hoodie offers a perfect blend of style, warmth, and performance. Whether you’re warming up, cooling down, or just lounging, its premium fabric and thoughtful design make it a versatile addition to your workout wardrobe.",
       price: 70,
       brand: "Nike",
       rating: 5,
       numReviews: 51,
+      countInStock: 0,
     },
     {
       _id: "333333333333333333333333",
       name: "Adidas Mens Long Sleeve Hoodie",
       category: "Shirts",
       image: "/images/product-3.jpg",
+      description:
+        "Stay comfortable, stylish, and ready for action with the Adidas Men’s Long Sleeve Hoodie. Whether you’re gearing up for a workout or enjoying a relaxed day off, this hoodie combines the iconic Adidas design with functional comfort. Perfect for layering, it offers the warmth you need without sacrificing mobility.",
       price: 59,
       brand: "Adidas",
       rating: 4,
       numReviews: 45,
+      countInStock: 0,
     },
     {
       _id: "444444444444444444444444",
       name: "Under Armour Mens Sportstyle Tricot Joggers",
       category: "Pants",
       image: "/images/product-4.jpg",
+      description:
+        "Designed for comfort and performance, the Under Armour Men’s Sportstyle Tricot Joggers offer a perfect blend of casual style and athletic functionality. Made from lightweight, breathable fabric, these joggers keep you cool and comfortable whether you’re training, running errands, or lounging at home.",
       price: 90,
       brand: "Under Armour",
       rating: 2.5,
@@ -47,6 +57,8 @@ export default {
       name: "Champion Mens Graphic Powerblend Fleece Jogger",
       category: "Pants",
       image: "/images/product-5.jpg",
+      description:
+        "Stay cozy and stylish with the Champion Men’s Graphic Powerblend Fleece Jogger. Made with a soft, durable fleece blend, these joggers offer all-day comfort while featuring the iconic Champion logo for a sporty look that’s perfect for both workouts and casual wear.",
       price: 119,
       brand: "Champion",
       rating: 3.5,
@@ -58,6 +70,8 @@ export default {
       name: "Aelfric Eden Mens Joggers Pants Long Multi-Pockets",
       category: "Pants",
       image: "/images/product-6.jpg",
+      description:
+        "Step up your streetwear game with the Aelfric Eden Men’s Joggers Pants. Featuring a modern, slim fit design with multiple functional pockets, these joggers offer both style and practicality, perfect for those who want comfort and utility in one sleek package.",
       price: 85,
       brand: "Aelfric Eden",
       rating: 4.5,
