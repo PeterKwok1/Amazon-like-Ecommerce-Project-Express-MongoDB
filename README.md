@@ -48,7 +48,18 @@ https://www.youtube.com/playlist?list=PLeh2GWv22bmSkMEpSv5Wme56XVpKG1Tr5 - Admin
 ## Tickets
 
 - Form validation
-  - Re-enter password should be required to submit.
+  - Define validation
+    - Name - filled
+    - Email - filled, regex
+    - Password - filled, regex
+    - Re-password - filled, match Password
+    - Submit - All fields filled
+  - Validate as you type
+  - Submit
+    - Html disabled attribute
+  - Html
+    - Requirements
+    - Pass or not
 - Personalize a bit.
   - Format date paid.
   - Header spacing

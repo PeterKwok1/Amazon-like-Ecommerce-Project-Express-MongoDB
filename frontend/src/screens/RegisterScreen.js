@@ -45,7 +45,7 @@ const RegisterScreen = {
             </li>
             <li>
               <label for="name">Name</label>
-              <input type="name" name="name" id="name" /> 
+              <input name="name" id="name" /> 
             </li>
             <li>
               <label for="email">Email</label>
