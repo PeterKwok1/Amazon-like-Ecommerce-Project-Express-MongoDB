@@ -14,21 +14,34 @@ const RegisterScreen = {
       .addEventListener("submit", async (e) => {
         e.preventDefault();
 
-        showLoading();
+        if (
+          document.getElementById("repassword").value ===
+          document.getElementById("password").value
+        ) {
+          showLoading();
 
-        const data = await register({
-          name: document.getElementById("name").value,
-          email: document.getElementById("email").value,
-          password: document.getElementById("password").value,
-        });
+          const data = await register({
+            name: document.getElementById("name").value,
+            email: document.getElementById("email").value,
+            password: document.getElementById("password").value,
+          });
 
-        hideLoading();
+          hideLoading();
 
-        if (data.error) {
-          showMessage(data.error);
+          if (data.error) {
+            showMessage(data.error);
+          } else {
+            setUserInfo(data);
+            redirectUser();
+          }
         } else {
-          setUserInfo(data);
-          redirectUser();
+          const repasswordReq = document.createElement("div");
+          repasswordReq.classList.add("requirements", "warning");
+          repasswordReq.textContent = "Passwords must match."; // can't chain these methods because
+
+          document
+            .getElementById("repassword")
+            .insertAdjacentElement("afterend", repasswordReq);
         }
       });
   },
@@ -49,11 +62,12 @@ const RegisterScreen = {
             </li>
             <li>
               <label for="email">Email</label>
-              <input type="email" name="email" id="email" /> 
+              <input name="email" id="email" /> 
             </li>
             <li>
               <label for="password">Password</label>
               <input type="password" name="password" id="password" /> 
+              <div class="requirements">Password must be at least 8 characters long, include at least one lowercase letter, one uppercase letter, one number, and one special character.</div>
             </li>
             <li>
               <label for="repassword">Re-Enter Password</label>

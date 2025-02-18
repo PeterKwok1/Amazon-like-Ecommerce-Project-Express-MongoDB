@@ -52,11 +52,12 @@ const ProfileScreen = {
                 </li>
                 <li>
                   <label for="email">Email</label>
-                  <input type="email" name="email" id="email" value="${email}"/> 
+                  <input name="email" id="email" value="${email}"/> 
                 </li>
                 <li>
                   <label for="password">Password</label>
                   <input type="password" name="password" id="password" /> 
+                  <div class="requirements">Password must be at least 8 characters long, include at least one lowercase letter, one uppercase letter, one number, and one special character.</div>
                 </li>
                 <li>
                   <button type="submit" class="primary">Update</button>

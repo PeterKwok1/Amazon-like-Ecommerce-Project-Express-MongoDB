@@ -47,33 +47,30 @@ https://www.youtube.com/playlist?list=PLeh2GWv22bmSkMEpSv5Wme56XVpKG1Tr5 - Admin
 
 ## Tickets
 
-- Form validation
-  - Define validation
-    - Name - filled
-    - Email - filled, regex
-    - Password - filled, regex
-    - Re-password - filled, match Password
-    - Submit - All fields filled
-  - Validate as you type
-  - Submit
-    - Html disabled attribute
-  - Html
-    - Requirements
-    - Pass or not
+- Form validation (register, update, signin)
+  - showMessage()
+    - userfiendly message
+    - express async handler -> local error handling
 - Personalize a bit.
   - Format date paid.
-  - Header spacing
-  - Product page spacing
+  - Header spacing.
+  - Product page spacing.
 
 ## Notes
 
-- --watch flag > Nodemon
-- package.json, type: module > babel (backend) (for ES6)
 - dialog tag / popover > manual modals (show/hide-Loading, showMessage)
-- PayPal SDK has changed.
-- Forms are not validated in the backend.
 - Passwords are not hashed.
 - Orders are not validated in the backend.
+
+### Changes
+
+- PayPal SDK update.
+- Prevent adding out of stock items to cart.
+- Front end form validation
+  - Passwords must match.
+- Backend form validation
+  - Removed input type email in favor of regex.
+  - Password validation.
 
 ### Dev
 

@@ -50,7 +50,9 @@ userRouter.post(
       email: req.body.email,
       password: req.body.password,
     });
+
     const createdUser = await user.save();
+
     if (!createdUser) {
       res.status(401).send({ message: "Invalid User Data" });
     } else {

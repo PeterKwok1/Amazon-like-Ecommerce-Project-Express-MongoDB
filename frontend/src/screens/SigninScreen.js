@@ -44,7 +44,7 @@ const SigninScreen = {
             </li>
             <li>
               <label for="email">Email</label>
-              <input type="email" name="email" id="email" /> 
+              <input name="email" id="email" /> 
             </li>
             <li>
               <label for="password">Password</label>

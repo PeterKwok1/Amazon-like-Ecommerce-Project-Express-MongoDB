@@ -49,7 +49,7 @@ app.get("/api/products/:id", (req, res) => {
 });
 
 // process errors passed by express async handler
-app.use((err, req, res, next) => {
+app.use((err, req, res) => {
   const status = err.name && err.name === "ValidationError" ? 400 : 500;
   res.status(status).send({ message: err.message });
 });
