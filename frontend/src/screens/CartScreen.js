@@ -1,6 +1,6 @@
 import { getProduct } from "../api.js";
 import { getCartItems, setCartItems } from "../localStorage.js";
-import { parseRequestURL, rerender } from "../utils.js";
+import { parseRequestURL, rerender, showMessage } from "../utils.js";
 
 const addToCart = (item, forceUpdate = false) => {
   let cartItems = getCartItems();
@@ -40,7 +40,7 @@ const CartScreen = {
     });
     const deleteButtons = document.getElementsByClassName("delete-button");
     Array.from(deleteButtons).forEach((deleteButton) => {
-      deleteButton.addEventListener("click", (e) => {
+      deleteButton.addEventListener("click", () => {
         removeFromCart(deleteButton.id);
       });
     });
@@ -52,16 +52,22 @@ const CartScreen = {
   render: async () => {
     const request = parseRequestURL();
     if (request.id) {
-      const product = await getProduct(request.id);
-      addToCart({
-        product: product._id,
-        name: product.name,
-        image: product.image,
-        price: product.price,
-        countInStock: product.countInStock,
-        qty: 1,
-      });
+      const data = await getProduct(request.id);
+
+      if (data.error) {
+        showMessage(data.error);
+      } else {
+        addToCart({
+          product: data._id,
+          name: data.name,
+          image: data.image,
+          price: data.price,
+          countInStock: data.countInStock,
+          qty: 1,
+        });
+      }
     }
+
     const cartItems = getCartItems();
     return `
       <div class="content cart">

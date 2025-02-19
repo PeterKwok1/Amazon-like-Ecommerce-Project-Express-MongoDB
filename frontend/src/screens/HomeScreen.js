@@ -11,7 +11,7 @@ const HomeScreen = {
     hideLoading();
 
     if (response.status !== 200) {
-      return "<div>Error getting data</div>";
+      return "<div>Error getting products.</div>";
     }
 
     const products = await response.json();

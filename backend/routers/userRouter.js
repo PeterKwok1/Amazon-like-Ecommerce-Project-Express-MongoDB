@@ -17,11 +17,12 @@ userRouter.get(
       });
       const createdUser = await user.save();
       res.send(createdUser);
-    } catch (err) {
-      res.status(500).send({ message: err.message });
+    } catch (error) {
+      res.status(500).send({ error: error.message });
     }
   }),
 );
+
 userRouter.post(
   "/signin",
   expressAsyncHandler(async (req, res) => {
@@ -30,7 +31,7 @@ userRouter.post(
       password: req.body.password,
     });
     if (!signinUser) {
-      res.status(401).send({ message: "Invalid Email or Password" });
+      res.status(401).send({ error: "Sorry, invalid email or password." });
     } else {
       res.send({
         _id: signinUser._id,
@@ -42,16 +43,17 @@ userRouter.post(
     }
   }),
 );
+
 userRouter.post(
   "/register",
   expressAsyncHandler(async (req, res) => {
-    const user = new User({
-      name: req.body.name,
-      email: req.body.email,
-      password: req.body.password,
-    });
-
     try {
+      const user = new User({
+        name: req.body.name,
+        email: req.body.email,
+        password: req.body.password,
+      });
+
       const createdUser = await user.save();
 
       res.send({
@@ -75,16 +77,18 @@ userRouter.post(
         if (error.errors.password) {
           message += "Please enter a valid password.<br><br>";
         }
-      } else if (errorHeading.includes("duplicate")) {
+      }
+
+      if (errorHeading.includes("duplicate")) {
         message += "A user with that email already exists.<br><br>";
-      } else {
-        message = error.message;
+        res.status(401).json({ error: message });
       }
 
       res.status(401).json({ error: message });
     }
   }),
 );
+
 userRouter.put(
   "/:id",
   isAuth,
@@ -92,21 +96,43 @@ userRouter.put(
     const user = await User.findById(req.params.id);
 
     if (!user) {
-      res.status(404).send({ message: "User Not Found" });
+      res.status(404).send({ error: "Sorry, could not find user." });
     } else {
-      user.name = req.body.name || user.name;
-      user.email = req.body.email || user.email;
-      user.password = req.body.password || user.password;
+      try {
+        user.name = req.body.name || user.name;
+        user.email = req.body.email || user.email;
+        user.password = req.body.password || user.password;
 
-      const updatedUser = await user.save();
-      res.send({
-        _id: updatedUser._id,
-        name: updatedUser.name,
-        email: updatedUser.email,
-        isAdmin: updatedUser.isAdmin,
-        token: generateToken(updatedUser),
-      });
+        const updatedUser = await user.save();
+
+        res.send({
+          _id: updatedUser._id,
+          name: updatedUser.name,
+          email: updatedUser.email,
+          isAdmin: updatedUser.isAdmin,
+          token: generateToken(updatedUser),
+        });
+      } catch (error) {
+        let message = "";
+        const errorHeading = error.message.split(":")[0];
+
+        if (errorHeading.includes("validation")) {
+          if (error.errors.email) {
+            message += "Please enter a valid email.<br><br>";
+          }
+          if (error.errors.password) {
+            message += "Please enter a valid password.<br><br>";
+          }
+        }
+
+        if (errorHeading.includes("duplicate")) {
+          message += "A user with that email already exists.<br><br>";
+        }
+
+        res.status(401).json({ error: message });
+      }
     }
   }),
 );
+
 export default userRouter;

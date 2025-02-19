@@ -106,7 +106,7 @@ paypalRouter.post(
         };
         await order.save();
       } else {
-        res.status(404).send({ message: "Order not found" });
+        res.status(404).send({ message: "Order not found." });
       }
 
       res.status(httpStatusCode).json(jsonResponse);

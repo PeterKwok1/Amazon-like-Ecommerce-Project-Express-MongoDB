@@ -14,7 +14,12 @@ const convertCartToOrder = () => {
     document.location.hash = "/cart";
   }
   const shipping = getShipping();
-  if (!shipping.address) {
+  if (
+    !shipping.address ||
+    !shipping.city ||
+    !shipping.postalCode ||
+    !shipping.country
+  ) {
     document.location.hash = "/shipping";
   }
   const payment = getPayment();

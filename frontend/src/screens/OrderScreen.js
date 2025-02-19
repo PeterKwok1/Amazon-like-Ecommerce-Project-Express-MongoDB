@@ -19,7 +19,7 @@ const addPaypalSdk = async (totalPrice) => {
   try {
     paypal = await loadScript({ clientId });
   } catch (error) {
-    console.error("failed to load the PayPal JS SDK script", error);
+    console.error("Failed to load PayPal SDK script.", error);
   }
   if (paypal) {
     handlePayment(paypal, totalPrice);
@@ -137,6 +137,12 @@ const OrderScreen = {
   after_render: () => {},
   render: async () => {
     const request = parseRequestURL();
+    const data = await getOrder(request.id);
+
+    if (data.error) {
+      return `<div>${data.error}</div>`;
+    }
+
     const {
       _id,
       shipping,
@@ -150,7 +156,7 @@ const OrderScreen = {
       deliveredAt,
       isPaid,
       paidAt,
-    } = await getOrder(request.id);
+    } = data;
 
     if (!isPaid) {
       addPaypalSdk(totalPrice);

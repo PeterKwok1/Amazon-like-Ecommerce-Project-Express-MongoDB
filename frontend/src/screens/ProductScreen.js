@@ -18,6 +18,7 @@ const ProductScreen = {
     showLoading();
 
     const product = await getProduct(request.id);
+
     if (product.error) {
       return `<div>${product.error}</div>`;
     }

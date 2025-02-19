@@ -35,18 +35,22 @@ const ShippingScreen = {
             <li>
               <label for="address">Address</label>
               <input type="text" name="address" id="address" value="${address}"/> 
+              <div class="requirements">Required (Anything for testing purposes.)</div>
             </li>
             <li>
               <label for="city">City</label>
               <input type="text" name="city" id="city" value="${city}"/> 
+              <div class="requirements">Required </div>
             </li>
             <li>
               <label for="postalCode">Postal Code</label>
               <input type="text" name="postalCode" id="postalCode" value="${postalCode}"/> 
+              <div class="requirements">Required</div>
             </li>
             <li>
               <label for="country">Country</label>
               <input type="text" name="country" id="country" value="${country}"/> 
+              <div class="requirements">Required</div>
             </li>
             <li>
               <button type="submit" class="primary">Continue</button>

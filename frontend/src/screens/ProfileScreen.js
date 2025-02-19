@@ -53,6 +53,7 @@ const ProfileScreen = {
                 <li>
                   <label for="email">Email</label>
                   <input name="email" id="email" value="${email}"/> 
+                  <div class="requirements">example@example.example</div>
                 </li>
                 <li>
                   <label for="password">Password</label>

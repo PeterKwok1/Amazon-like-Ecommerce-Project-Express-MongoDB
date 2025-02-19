@@ -6,14 +6,9 @@ export const getProduct = async (id) => {
   try {
     const response = await fetch(`${apiURL}/api/products/${id}`);
 
-    if (response.status !== 200) {
-      throw new Error(response.data.message);
-    }
-
     return await response.json();
-  } catch (err) {
-    console.log(err);
-    return { error: err.response.data.message || err.message };
+  } catch (error) {
+    return { error: error.message };
   }
 };
 
@@ -30,30 +25,32 @@ export const signin = async ({ email, password }) => {
         password,
       }),
     });
-    if (response.status !== 200) {
-      throw new Error(response.data.message);
-    }
     return await response.json();
-  } catch (err) {
-    console.log(err);
-    return { error: err.response.data.message || err.message };
+  } catch (error) {
+    return { error: error.message };
   }
 };
 
 export const register = async ({ name, email, password }) => {
-  const response = await fetch(`${apiURL}/api/users/register`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      name,
-      email,
-      password,
-    }),
-  });
+  try {
+    const response = await fetch(`${apiURL}/api/users/register`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name,
+        email,
+        password,
+      }),
+    });
 
-  return await response.json();
+    // server will send data or db error
+    return await response.json();
+  } catch (error) {
+    // failed to connect
+    return { error: error.message };
+  }
 };
 
 export const update = async ({ name, email, password }) => {
@@ -71,13 +68,10 @@ export const update = async ({ name, email, password }) => {
         password,
       }),
     });
-    if (response.status !== 200) {
-      throw new Error(response.data.message);
-    }
+
     return await response.json();
-  } catch (err) {
-    console.log(err);
-    return { error: err.response.data.message || err.message };
+  } catch (error) {
+    return { error: error.message };
   }
 };
 
@@ -93,12 +87,10 @@ export const createOrder = async (order) => {
       },
       body: JSON.stringify(order),
     });
-    if (response.status !== 201) {
-      throw new Error(response.data.message);
-    }
+
     return await response.json();
-  } catch (err) {
-    return { error: err.response ? err.response.data.message : err.message };
+  } catch (error) {
+    return { error: error.message };
   }
 };
 
@@ -110,9 +102,7 @@ export const getOrder = async (id) => {
         Authorization: `Bearer ${token}`,
       },
     });
-    if (response.status !== 200) {
-      throw new Error(response.data.message);
-    }
+
     return await response.json();
   } catch (err) {
     return { error: err.message };
@@ -127,22 +117,16 @@ export const getMyOrders = async () => {
         Authorization: `Bearer ${token}`,
       },
     });
-    if (response.status !== 200) {
-      throw new Error(response.data.message);
-    }
+
     return await response.json();
-  } catch (err) {
-    return { error: err.response ? err.response.data.message : err.message };
+  } catch (error) {
+    return { error: error.message };
   }
 };
 
 // PayPal
 export const getPaypalClientId = async () => {
   const response = await fetch(`${apiURL}/api/paypal/clientId`);
-
-  if (response.status !== 200) {
-    throw new Error(response.data.message);
-  }
 
   const data = await response.json();
 

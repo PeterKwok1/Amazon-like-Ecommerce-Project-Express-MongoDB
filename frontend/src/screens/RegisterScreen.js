@@ -62,7 +62,8 @@ const RegisterScreen = {
             </li>
             <li>
               <label for="email">Email</label>
-              <input name="email" id="email" /> 
+              <input name="email" id="email" />
+              <div class="requirements">example@example.example</div>
             </li>
             <li>
               <label for="password">Password</label>

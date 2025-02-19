@@ -48,19 +48,16 @@ https://www.youtube.com/playlist?list=PLeh2GWv22bmSkMEpSv5Wme56XVpKG1Tr5 - Admin
 ## Tickets
 
 - Form validation (register, update, signin)
-  - showMessage()
-    - userfiendly messages
-      - error handling
-        - copy register route outline
-    - express async handler -> local error handling
-      - uninstall
-  - make mongo db lowercase emails to eliminate duplicates (save, update, and verify)
+  - remove express async handler
+    - server.js
+    - uninstall
+  - make mongodb lowercase emails to eliminate duplicates (register, update, and signin)
   - change mongo uri to Amazon-like (env + render)
+- Add to cart should add 1 to count in cart
 - Personalize a bit.
   - Format date paid.
   - Header spacing.
   - Product page spacing.
-  - Code spacing
 
 ## Notes
 
