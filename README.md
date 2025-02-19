@@ -49,12 +49,18 @@ https://www.youtube.com/playlist?list=PLeh2GWv22bmSkMEpSv5Wme56XVpKG1Tr5 - Admin
 
 - Form validation (register, update, signin)
   - showMessage()
-    - userfiendly message
+    - userfiendly messages
+      - error handling
+        - copy register route outline
     - express async handler -> local error handling
+      - uninstall
+  - make mongo db lowercase emails to eliminate duplicates (save, update, and verify)
+  - change mongo uri to Amazon-like (env + render)
 - Personalize a bit.
   - Format date paid.
   - Header spacing.
   - Product page spacing.
+  - Code spacing
 
 ## Notes
 
@@ -66,15 +72,16 @@ https://www.youtube.com/playlist?list=PLeh2GWv22bmSkMEpSv5Wme56XVpKG1Tr5 - Admin
 
 - PayPal SDK update.
 - Prevent adding out of stock items to cart.
-- Front end form validation
+- Frontend form validation
   - Passwords must match.
 - Backend form validation
   - Removed input type email in favor of regex.
   - Password validation.
+  - Send user more informative errors.
 
 ### Dev
 
-- Front end testing is served on a different port, meaning it does not use the express "/" and public routes.
+- frontend `npm start` is served on a different port. It does not use the express "/" and public routes which serve dist.
 
 ### Production
 

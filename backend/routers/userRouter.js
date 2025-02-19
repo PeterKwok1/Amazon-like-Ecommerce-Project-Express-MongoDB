@@ -51,11 +51,9 @@ userRouter.post(
       password: req.body.password,
     });
 
-    const createdUser = await user.save();
+    try {
+      const createdUser = await user.save();
 
-    if (!createdUser) {
-      res.status(401).send({ message: "Invalid User Data" });
-    } else {
       res.send({
         _id: createdUser._id,
         name: createdUser.name,
@@ -63,6 +61,27 @@ userRouter.post(
         isAdmin: createdUser.isAdmin,
         token: generateToken(createdUser),
       });
+    } catch (error) {
+      let message = "";
+      const errorHeading = error.message.split(":")[0];
+
+      if (errorHeading.includes("validation")) {
+        if (error.errors.name) {
+          message += "Please enter a name.<br><br>";
+        }
+        if (error.errors.email) {
+          message += "Please enter a valid email.<br><br>";
+        }
+        if (error.errors.password) {
+          message += "Please enter a valid password.<br><br>";
+        }
+      } else if (errorHeading.includes("duplicate")) {
+        message += "A user with that email already exists.<br><br>";
+      } else {
+        message = error.message;
+      }
+
+      res.status(401).json({ error: message });
     }
   }),
 );

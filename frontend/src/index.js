@@ -3,7 +3,7 @@ import ProductScreen from "./screens/ProductScreen.js";
 import { hideLoading, parseRequestURL, showLoading } from "./utils.js";
 import Error404Screen from "./screens/Error404Screen.js";
 import CartScreen from "./screens/CartScreen.js";
-import SigninScreen from "./screens/signInScreen.js";
+import SigninScreen from "./screens/SigninScreen.js";
 import Header from "./components/Header.js";
 import RegisterScreen from "./screens/RegisterScreen.js";
 import ProfileScreen from "./screens/ProfileScreen.js";
@@ -39,8 +39,8 @@ const router = async () => {
   const screen = routes[parseUrl] ? routes[parseUrl] : Error404Screen;
 
   const header = document.getElementById("header-container");
-  header.innerHTML = await Header.render();
-  await Header.after_render();
+  header.innerHTML = Header.render();
+  Header.after_render();
 
   const main = document.getElementById("main-container");
   main.innerHTML = await screen.render();
