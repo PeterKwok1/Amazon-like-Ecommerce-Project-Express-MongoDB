@@ -48,6 +48,6 @@ app.get("/api/products/:id", (req, res) => {
   }
 });
 
-app.listen(config.PORT, "0.0.0.0", () => {
-  console.log(`App listening on http://localhost:${config.PORT}`); // testing link
+app.listen(config.PORT, config.HOST, () => {
+  console.log(`App listening on http://${config.HOST}:${config.PORT}`);
 });

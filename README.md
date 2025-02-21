@@ -47,12 +47,10 @@ https://www.youtube.com/playlist?list=PLeh2GWv22bmSkMEpSv5Wme56XVpKG1Tr5 - Admin
 
 ## Tickets
 
-- Form validation (register, update, signin)
-  - change mongo uri to Amazon-like (env + render)
 - Personalize a bit.
-  - Format date paid.
-  - Header spacing.
-  - Product page spacing.
+  - Unique products
+    - Descriptions (ChatGPT)
+    - update dist
 - Webpack config
 
 ## Notes
@@ -79,7 +77,6 @@ https://www.youtube.com/playlist?list=PLeh2GWv22bmSkMEpSv5Wme56XVpKG1Tr5 - Admin
 
 ### Production
 
-- Add env to render.
+- Change frontend config before building and env.
+- Add env to host.
   - Render can't read env from process.env, but can from dotenv.
-- Change front end config before building to make requests to hoster.
-- Responses don't return statusText on render, so I switched to status.

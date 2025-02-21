@@ -7,9 +7,9 @@ const Header = {
       <div class="brand">
         <a href="/#/">Amazon-like</a>
       </div>
-      <div>
-        ${name ? `<a href="/#/profile">${name}</a>` : `<a href="/#/signin">Sign-In</a>`}
-        <a href="/#/cart">Cart</a>
+      <div class="panel">
+          ${name ? `<a href="/#/profile">${name}</a>` : `<a href="/#/signin">Sign-In</a>`}
+          <a href="/#/cart">Cart</a>
       </div>
     `;
   },

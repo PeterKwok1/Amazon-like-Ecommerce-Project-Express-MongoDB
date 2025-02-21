@@ -185,7 +185,7 @@ const OrderScreen = {
               </div>
               ${
                 isPaid
-                  ? `<div class="success">Paid on ${paidAt}</div>`
+                  ? `<div class="success">Paid on ${new Date(paidAt).toLocaleDateString()}</div>`
                   : `<div class="error">Not Paid</div>`
               }
             </div>
