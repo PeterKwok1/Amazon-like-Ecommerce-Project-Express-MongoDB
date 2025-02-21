@@ -68,7 +68,7 @@ const RegisterScreen = {
             <li>
               <label for="password">Password</label>
               <input type="password" name="password" id="password" /> 
-              <div class="requirements">Password must be at least 8 characters long, include at least one lowercase letter, one uppercase letter, one number, and one special character.</div>
+              <div class="requirements">Password must be at least 8 characters long, include at least one lowercase letter, one uppercase letter, one number, and one special character (@$!%*?&).</div>
             </li>
             <li>
               <label for="repassword">Re-Enter Password</label>

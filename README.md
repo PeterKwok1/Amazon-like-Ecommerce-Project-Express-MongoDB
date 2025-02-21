@@ -48,16 +48,12 @@ https://www.youtube.com/playlist?list=PLeh2GWv22bmSkMEpSv5Wme56XVpKG1Tr5 - Admin
 ## Tickets
 
 - Form validation (register, update, signin)
-  - remove express async handler
-    - server.js
-    - uninstall
-  - make mongodb lowercase emails to eliminate duplicates (register, update, and signin)
   - change mongo uri to Amazon-like (env + render)
-- Add to cart should add 1 to count in cart
 - Personalize a bit.
   - Format date paid.
   - Header spacing.
   - Product page spacing.
+- Webpack config
 
 ## Notes
 
@@ -69,6 +65,7 @@ https://www.youtube.com/playlist?list=PLeh2GWv22bmSkMEpSv5Wme56XVpKG1Tr5 - Admin
 
 - PayPal SDK update.
 - Prevent adding out of stock items to cart.
+- Lowercase emails to prevent the same email with different capitalization.
 - Frontend form validation
   - Passwords must match.
 - Backend form validation

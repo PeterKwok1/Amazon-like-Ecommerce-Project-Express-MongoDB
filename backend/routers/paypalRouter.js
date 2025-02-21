@@ -1,5 +1,4 @@
 import express from "express";
-import expressAsyncHandler from "express-async-handler";
 import { isAuth } from "../utils.js";
 import {
   ApiError,
@@ -37,21 +36,17 @@ paypalRouter.get("/clientId", (req, res) => {
   res.send({ clientId: config.PAYPAL_CLIENT_ID });
 });
 
-paypalRouter.post(
-  "/",
-  isAuth,
-  expressAsyncHandler(async (req, res) => {
-    try {
-      // use the cart information passed from the front-end to calculate the order amount detals
-      const { totalPrice } = req.body;
-      const { jsonResponse, httpStatusCode } = await createOrder(totalPrice);
-      res.status(httpStatusCode).json(jsonResponse);
-    } catch (error) {
-      console.error("Failed to create order:", error);
-      res.status(500).json({ error: "Failed to create order." });
-    }
-  }),
-);
+paypalRouter.post("/", isAuth, async (req, res) => {
+  try {
+    // use the cart information passed from the front-end to calculate the order amount detals
+    const { totalPrice } = req.body;
+    const { jsonResponse, httpStatusCode } = await createOrder(totalPrice);
+    res.status(httpStatusCode).json(jsonResponse);
+  } catch (error) {
+    console.error("Failed to create order:", error);
+    res.status(500).json({ error: "Failed to create order." });
+  }
+});
 const createOrder = async (totalPrice) => {
   const collect = {
     body: {
@@ -85,37 +80,33 @@ const createOrder = async (totalPrice) => {
   }
 };
 
-paypalRouter.post(
-  "/:paypalID/capture",
-  isAuth,
-  expressAsyncHandler(async (req, res) => {
-    try {
-      const { jsonResponse, httpStatusCode } = await captureOrder(
-        req.params.paypalID,
-      );
+paypalRouter.post("/:paypalID/capture", isAuth, async (req, res) => {
+  try {
+    const { jsonResponse, httpStatusCode } = await captureOrder(
+      req.params.paypalID,
+    );
 
-      const order = await Order.findById(req.body.id);
+    const order = await Order.findById(req.body.id);
 
-      if (order) {
-        order.isPaid = true;
-        order.paidAt = Date.now();
-        order.payment.paymentResult = {
-          orderID: req.body.orderID,
-          payerID: req.body.payerID,
-          paymentID: req.body.paymentID,
-        };
-        await order.save();
-      } else {
-        res.status(404).send({ message: "Order not found." });
-      }
-
-      res.status(httpStatusCode).json(jsonResponse);
-    } catch (error) {
-      console.error("Failed to create order:", error);
-      res.status(500).json({ error: "Failed to capture order." });
+    if (order) {
+      order.isPaid = true;
+      order.paidAt = Date.now();
+      order.payment.paymentResult = {
+        orderID: req.body.orderID,
+        payerID: req.body.payerID,
+        paymentID: req.body.paymentID,
+      };
+      await order.save();
+    } else {
+      res.status(404).send({ message: "Order not found." });
     }
-  }),
-);
+
+    res.status(httpStatusCode).json(jsonResponse);
+  } catch (error) {
+    console.error("Failed to create order:", error);
+    res.status(500).json({ error: "Failed to capture order." });
+  }
+});
 const captureOrder = async (paypalID) => {
   const collect = {
     id: paypalID,
