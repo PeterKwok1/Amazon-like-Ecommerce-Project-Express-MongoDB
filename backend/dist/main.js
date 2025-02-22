@@ -66,7 +66,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \***********************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   apiURL: () => (/* binding */ apiURL)\n/* harmony export */ });\nconst apiURL = \"http://localhost:10000\"; // dev\r\n// export const apiURL =\r\n//   \"https://amazon-like-ecommerce-project-express.onrender.com\"; // prod\r\n\n\n//# sourceURL=webpack://frontend/./src/config.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   apiURL: () => (/* binding */ apiURL)\n/* harmony export */ });\n// export const apiURL = \"http://localhost:10000\"; // dev\r\nconst apiURL =\r\n  \"https://amazon-like-ecommerce-project-express.onrender.com\"; // prod\r\n\n\n//# sourceURL=webpack://frontend/./src/config.js?");
 
 /***/ }),
 
