@@ -47,10 +47,6 @@ https://www.youtube.com/playlist?list=PLeh2GWv22bmSkMEpSv5Wme56XVpKG1Tr5 - Admin
 
 ## Tickets
 
-- Personalize a bit.
-  - Unique products
-    - Descriptions (ChatGPT)
-    - update dist
 - Webpack config
 
 ## Notes
