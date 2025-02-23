@@ -66,6 +66,7 @@ https://www.youtube.com/playlist?list=PLeh2GWv22bmSkMEpSv5Wme56XVpKG1Tr5 - Admin
   - Removed input type email in favor of regex.
   - Password validation.
   - Send user more informative errors.
+- Webpack config for easier build using css-loader and HtmlWebpackPlugin.
 
 ### Dev
 

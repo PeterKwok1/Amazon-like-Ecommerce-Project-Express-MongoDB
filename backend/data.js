@@ -24,7 +24,7 @@ export default {
       brand: "Vexx",
       rating: 5,
       numReviews: 51,
-      countInStock: 0,
+      countInStock: 16,
     },
     {
       _id: "333333333333333333333333",
@@ -63,7 +63,7 @@ export default {
       brand: "Luxe Allure",
       rating: 3.5,
       numReviews: 89,
-      countInStock: 6,
+      countInStock: 0,
     },
     {
       _id: "666666666666666666666666",
@@ -111,11 +111,11 @@ export default {
       image: "/images/product-9.jpg",
       description:
         'The Ciel "City Breeze" white button-up blouse is your go-to for laid-back yet stylish vibes. Made from soft, breathable fabric, this blouse features a relaxed fit with rolled-up sleeves for a casual, easygoing look. Perfect for layering or wearing on its own, it’s a versatile piece that brings a cool, effortless edge to your everyday style.',
-      price: 32,
+      price: 35,
       brand: "Ciel",
       rating: 4,
       numReviews: 25,
-      countInStock: 8,
+      countInStock: 0,
     },
     {
       _id: "121212121212121212121212",

@@ -105,16 +105,17 @@ header a:hover {
 }
 .brand a {
   font-size: 3rem;
+  padding-left: 1rem;
 }
 .panel {
   display: flex;
   flex-direction: row;
 }
 .panel a {
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
 }
 .panel a[href="/#/cart"] {
-  border-left: 0.1rem #c0c0c0 solid;
+  border-left: 0.2rem #c0c0c0 solid;
 }
 
 footer {
