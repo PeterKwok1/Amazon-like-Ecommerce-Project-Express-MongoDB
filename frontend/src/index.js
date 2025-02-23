@@ -1,3 +1,5 @@
+import "../style.css";
+
 import HomeScreen from "./screens/HomeScreen.js";
 import ProductScreen from "./screens/ProductScreen.js";
 import { hideLoading, parseRequestURL, showLoading } from "./utils.js";

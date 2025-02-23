@@ -47,7 +47,7 @@ https://www.youtube.com/playlist?list=PLeh2GWv22bmSkMEpSv5Wme56XVpKG1Tr5 - Admin
 
 ## Tickets
 
-- Webpack config
+-
 
 ## Notes
 
