@@ -19,11 +19,7 @@ Hosted at: https://amazon-like-ecommerce-project-express.onrender.com
 - Order
   - Shipping
   - Payment
-    - Updates to paid on payment.
     - PayPal SDK (Stripe not supported)
-      - Sandbox account
-        - email: sb-5kmkv37730207@personal.example.com
-        - password: x<K{8S]]
   - Place order
     - Creates the order and clears cart, allowing you to pay later (Order details).
 
