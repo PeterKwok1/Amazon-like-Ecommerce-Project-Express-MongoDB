@@ -4,10 +4,6 @@
 
 A fullstack Amazon-like ecommerce webisite using Express.js and MongoDB.
 
-Hosted at: https://amazon-like-ecommerce-project-express.onrender.com
-
-(Takes ~30 sec to spin-up after inactivity due to free hosting.)
-
 ## Features
 
 - Shopping cart
@@ -19,9 +15,9 @@ Hosted at: https://amazon-like-ecommerce-project-express.onrender.com
 - Order
   - Shipping
   - Payment
-    - PayPal SDK (Stripe not supported)
+    - PayPal SDK
   - Place order
-    - Creates the order and clears cart, allowing you to pay later (Order details).
+    - Creates order and clears cart, allowing you to pay later (Order details).
 
 ## Frameworks / Libraries / Technologies
 
@@ -71,5 +67,3 @@ https://www.youtube.com/playlist?list=PLeh2GWv22bmSkMEpSv5Wme56XVpKG1Tr5 - Admin
 ### Production
 
 - Change frontend config before building and env.
-- Add env to host.
-  - Render can't read env from process.env, but can from dotenv.
